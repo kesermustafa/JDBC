@@ -9,7 +9,8 @@ public class Runner {
      Statement statement = JDBC_Utils.createStatement();
 
 
-
+     JDBC_Utils.toplama(22,11);
+     JDBC_Utils.koniHacimHesapla(1, 6);
 
 
 
