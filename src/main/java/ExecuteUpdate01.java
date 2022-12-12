@@ -6,7 +6,7 @@ public class ExecuteUpdate01 {
 
         // 1.Adim : Driver'a kaydol  // 2.Adim : Database'e baglan  // 3.Adim : Statement olustur.
         Class.forName("org.postgresql.Driver");
-        Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/techproed", "postgres", "");
+        Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/techproed", "postgres", "**********0");
         Statement st = con.createStatement();
 
         //1. Örnek: number_of_employees değeri ortalama çalışan sayısından

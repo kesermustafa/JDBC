@@ -8,7 +8,7 @@ public class ExecuteQuery01 {
         Class.forName("org.postgresql.Driver");
 
         // 2.Adim : Database'e baglan
-        Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/techproed", "postgres", "");
+        Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/techproed", "postgres", "**********");
 
         // 3.Adim : Statement olustur.
         Statement st = con.createStatement();
