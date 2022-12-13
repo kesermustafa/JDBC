@@ -14,7 +14,7 @@ public class JDBC_Utils {
 
     // 1.Adim : Driver'a kaydol
     // 2.Adim : Database'e baglan
-    public static Connection connectToDataBase()  {
+    public static Connection connectToDataBase(String hostName, String dbName, String userName, String pasword)  {
 
         try {
             Class.forName("org.postgresql.Driver");
@@ -23,7 +23,7 @@ public class JDBC_Utils {
         }
 
         try {
-             connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/techproed", "postgres", "******");
+             connection = DriverManager.getConnection("jdbc:postgresql://"+hostName+":5432/"+dbName+"", ""+userName+ "", ""+pasword+"");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -48,6 +48,77 @@ public class JDBC_Utils {
         }
         return statement;
     }
+
+
+    // 4.Adim Query calistir
+
+    public static boolean execute(String sql){
+        boolean isExecute;
+
+        try {
+            isExecute = statement.execute((sql));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return isExecute;
+
+    }
+
+
+    // 5.Adim : Baglanti ve statement'i kapat.
+
+    public static void closeConnectionAndStatement(){
+
+        try {
+            connection.close();
+            statement.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            if(connection.isClosed() && statement.isClosed()){
+                System.out.println("Connections and Statement closed!");
+            }else {
+                System.out.println("Connections and Statement NOT closed!");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public static void main(String[] args) {
+        createTable("abc", "name VARCHAR(10)", "ID INT", "adress VARCHAR(80)");
+    }
+
+
+
+
+
+
+    // Table olusturan method
+      public static void createTable(String tableName, String... columnName_dateType ){
+
+        StringBuilder columnName_dateValue = new StringBuilder("");
+
+        for(String w : columnName_dateType){
+            columnName_dateValue.append(w).append(",");
+        }
+
+        columnName_dateValue.deleteCharAt(columnName_dateValue.length()-1);
+
+        try {
+            statement.execute("CREATE TABLE "+tableName+"("+columnName_dateValue+")");
+            System.out.println("Table " + tableName + " created!");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+
+
 
     public static void toplama(int x, int y){
 
@@ -138,6 +209,14 @@ public class JDBC_Utils {
         }
 
     }
+
+
+
+
+
+
+
+
 
 
 
