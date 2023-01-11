@@ -5,8 +5,6 @@ import java.util.List;
 
 public class JDBC_Utils {
 
-
-
     private static Connection connection;
     private static Statement statement;
     private static ResultSet resultSet;
@@ -89,9 +87,9 @@ public class JDBC_Utils {
 
 
     public static void main(String[] args) {
-        connectToDataBase("localhost", "techproed", "postgres", "*************");
+        connectToDataBase("localhost", "techproed", "postgres", "Mk.2243250");
         createStatement();
-        createTable("abcde", "name VARCHAR(10)", "ID INT", "adress VARCHAR(80)");
+      //  createTable("abcdeq", "name VARCHAR(10)", "ID INT", "adress VARCHAR(80)");
         closeConnectionAndStatement();
 
     }

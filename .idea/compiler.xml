@@ -9,5 +9,8 @@
         <module name="postGreJDBC" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="postGreJDBC" target="18" />
+    </bytecodeTargetLevel>
   </component>
 </project>
